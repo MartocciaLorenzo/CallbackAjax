@@ -1,0 +1,51 @@
+<html>
+    <title>Esercizio Ajax</title>
+    <head>LOGIN</head>
+    <body>
+        <legend>
+            <form>
+                <input type="text" name="username" id="username"><br>
+                <input type="text" name="password" id="password"><br>
+                <input type="text" name="registrati" id="registazione"><br>
+                <input type="text" name="login" id="login"><br>
+            </form>
+        </legend>
+        
+    </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#registrazione").click(function() {
+        var send = {username : $("username").val(), password : $("password").val() };
+        $.ajax({
+            url : 'http://localhost:3000/page',
+            method : 'POST', 
+            contentType : 'application/json',
+            dataType : 'json', 
+            data : JSON.stringify(send), 
+            success : function (result) {
+                $("log").val("Messaggio verde");
+            },
+            error : function (request, msg, error) {
+                $("log").val("Messaggio rosso");
+            }
+        });
+    });
+
+    $("#login").click(function() {
+        var send = {username : $("username").val(), password : $("password").val() };
+        $.ajax({
+            url : 'http://localhost:3000/page',
+            method : 'PUT', 
+            contentType : 'application/json',
+            dataType : 'json', 
+            data : JSON.stringify(send), 
+            success : function (result) {
+                $("log").val("Messaggio verde");
+            },
+            error : function (request, msg, error) {
+                $("log").val("Messaggio rosso");
+            }
+        });
+    });
+</script>
